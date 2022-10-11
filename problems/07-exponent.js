@@ -1,5 +1,5 @@
 /***********************************************************************
-Write a recursive function called `exponent` that takes two integers, 
+Write a recursive function called `exponent` that takes two integers,
 `num` and `power`, and returns `num` raised to the `power`th power. Your
 function should work when `num` or `power` are positive OR negative.
 
@@ -18,12 +18,42 @@ Examples:
 exponent(3, 2); // 9
 exponent(2, -2); // 1/4 (or 0.25)
 exponent(5, 5); // 3125
+
+const exponent = (num, power) => {
+  if (power === 1) return num;
+
+  if (power < 0) {
+    power *= -1;
+    num = 1 / num;
+  }
+  return num * exponent(num, power - 1)
+}
+
 ***********************************************************************/
 
 function exponent(num, power) {
     // Your code here
+    if (power > 0){
+        if (power === 1){
+            return num
+
+        }
+        return num * exponent(num, power - 1)
+    } else if (power < 0){
+        if (num >= 1){
+            return (1/num) * exponent(1/num, power + 1)
+        }
+        if (power === -1){
+            return num
+        }
+        return num * exponent(num, power + 1)
+    }
+
 }
-  
+
+exponent(3, 2); // 9
+exponent(2, -2); // 1/4 (or 0.25)
+exponent(5, 5); // 3125
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
     module.exports = exponent;
