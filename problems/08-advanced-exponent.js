@@ -53,9 +53,9 @@ function advancedExponent(b, n) {
     b = 1/b
   }
   if (n % 2 === 0){
-    return advancedExponent(b, n / 2) ** 2
+    return advancedExponent(b, n / 2) * advancedExponent(b, n / 2)
   } else {
-    return b *advancedExponent(b, (n - 1) / 2) ** 2
+    return b * (advancedExponent(b, (n - 1) / 2) * advancedExponent(b, (n - 1) / 2))
   }
 
 }
